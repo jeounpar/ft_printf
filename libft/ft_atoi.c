@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:28:32 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/11/16 19:51:37 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/18 22:08:37 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,27 @@ static int	my_space(char c)
 	return (0);
 }
 
-static int	get_result(char *str, int i, int result, int neg)
+static int	get_result(char *str, int i, long long result, int neg)
 {
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = str[i] - '0' + result * 10;
 		i++;
 	}
+	if (result > 2147483647 && neg == 1)
+		return (-1);
+	if (result > 2147483648 && neg == -1)
+		return (0);
 	return (result * neg);
 }
 
 int	ft_atoi(const char *nptr)
 {
-	char	*str;
-	int		neg;
-	int		cnt;
-	int		i;
-	int		result;
+	char		*str;
+	int			neg;
+	int			cnt;
+	int			i;
+	long long	result;
 
 	str = (char *)nptr;
 	neg = 1;
