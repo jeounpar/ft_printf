@@ -10,22 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 #include "libft/libft.h"
 
 int	find_format(char c, va_list ap)
 {
 	if (c == 'c')
 		return (char_format(ap));
-	else if (c == 'd' || c == 'i')
-		return (int_format(ap));
+	else if (c == 'd' || c == 'i' || c == 'u')
+		return (int_format(ap), c);
 	else if (c == 's')
 		return (string_format(ap));
 	else if (c == '%')
 		return (ft_putchar_fd('%', 1));
 	else if (c == 'p')
-		return (1);
-	return (1);
+		return (pointer_format(ap));
+	else if (c == 'x' || c == 'X')
+		return (hex_format(ap, c));
+	else
+		return (-1);
 }
 
 int	ft_printf(const char *str, ...)

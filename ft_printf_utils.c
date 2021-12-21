@@ -5,47 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 00:30:30 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 16:05:27 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/12/21 19:15:54 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/12/21 20:00:47 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
-#include "libft/libft.h"
+#include <stdlib.h>
 
-int string_format(va_list ap)
+static int ft_strlen(char *str)
 {
-	char	*str;
-	char	*rst;
-	int		len;
+	int	i;
 
-	len = 0;
-	str = va_arg(ap, char *);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+static int	get_len(long long n, int base_len)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (n < 0)
+		cnt++;
+	while (1)
+	{
+		cnt++;
+		if (n / base_len == 0)
+			break ;
+		n /= base_len;
+	}
+	return (cnt);
+}
+
+static void	str_base_to(long long n, char *base, char *str, int size)
+{
+	int			i;
+	int			neg;
+	int			len;
+	long long	tmp;
+
+	len = ft_strlen(base);
+	i = 0;
+	neg = 1;
+	if (n < 0)
+	{
+		neg = 0;
+		str[i] = '-';
+		i = 1;
+	}
+	while (i < size)
+	{
+		tmp = n % len;
+		if (tmp < 0)
+			tmp *= -1;
+		str[size - i - neg] = base[tmp];
+		n = n / len;
+		i++;
+	}
+	str[i] = '\0';
+}
+
+char	*ft_hextoa(long long n, char *base)
+{
+	int		size;
+	char	*str;
+
+	size = get_len(n, ft_strlen(base));
+	str = (char *)malloc((size + 3) * sizeof(char));
 	if (str == NULL)
-		rst = "(null)";
-	else
-		rst = ft_strdup(str);
-	len += ft_putstr_fd(rst, 1);
-	free(rst);
-	return (len);
-}
-
-int	char_format(va_list ap)
-{
-	ft_putchar_fd(va_arg(ap, int), 1);
-	return (1);
-}
-
-int int_format(va_list ap)
-{
-	int		n;
-	int		len;
-	char	*str;
-	
-	len = 0;
-	n = va_arg(ap, int);
-	str = ft_itoa(n);
-	len = ft_putstr_fd(str, 1);
-	free(str);
-	return (len);
+		return (NULL);
+	str_base_to(n, base, str, size);
+	return (str);
 }
