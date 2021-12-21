@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:30:30 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 22:45:30 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:13:50 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int string_format(va_list ap)
 	else
 		rst = ft_strdup(str);
 	len += ft_putstr_fd(rst, 1);
-	free(rst);
+	if (str != NULL)
+		free(rst);
 	return (len);
 }
 
@@ -36,21 +37,16 @@ int	char_format(va_list ap)
 	return (1);
 }
 
-int int_format(va_list ap, char c)
+int int_format(va_list ap)
 {
 	int		n;
 	int		len;
 	char	*str;
 	
 	len = 0;
-	if (c == 'u')
-		str = ft_hextoa(va_arg(ap, unsigned int), "0123456789");
-	else
-	{
-		n = va_arg(ap, int);
-		str = ft_itoa(n);
-		len = ft_putstr_fd(str, 1);
-	}
+	n = va_arg(ap, int);
+	str = ft_itoa(n);
+	len = ft_putstr_fd(str, 1);
 	free(str);
 	return (len);
 }
@@ -64,9 +60,7 @@ int	pointer_format(va_list ap)
 	len = 0;
 	n = va_arg(ap, long long);
 	if (n != 0)
-	{
 		str = ft_hextoa(n, "0123456789abcdef");
-	}
 	else
 		str = ft_strdup("0");
 	len += ft_putstr_fd("0x", 1);
@@ -83,8 +77,10 @@ int hex_format(va_list ap, char c)
 	len = 0;
 	if (c == 'x')
 		str = ft_hextoa(va_arg(ap, unsigned int), "0123456789abcdef");
-	else
+	else if (c == 'X')
 		str = ft_hextoa(va_arg(ap, unsigned int), "0123456789ABCDEF");
+	else
+		str = ft_hextoa(va_arg(ap, unsigned int), "0123456789");
 	len = ft_putstr_fd(str, 1);
 	free(str);
 	return (len);

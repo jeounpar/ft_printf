@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include "ft_printf.h"
 
 int main(void)
 {
-	printf("%p", ((void*)0));
+	char *str = NULL;
+	ft_printf("%s", str);
 
 	return 0;
 }
