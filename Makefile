@@ -13,24 +13,19 @@
 NAME		= libftprintf.a
 LIBFTDIR	= ./libft
 LIBFTFILE	= libft.a
-INCS = .
-
 CFLAGS = -Wall -Wextra -Werror
-
 SRCS = ft_printf.c \
 	ft_printf_format.c \
 	ft_printf_utils.c \
 	ft_printf_pointer.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJECTS = $(SRCS:.c=.o)
 
-.c.o :
-	gcc $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJECTS)
 	make -C $(LIBFTDIR)
 	cp $(LIBFTDIR)/$(LIBFTFILE) $(NAME)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJECTS)
 
 bonus :
 
@@ -38,7 +33,7 @@ all : $(NAME)
 
 clean :
 	make -C $(LIBFTDIR) clean
-	rm -f $(OBJS) $(BOBJS)
+	rm -f $(OBJECTS)
 
 fclean : clean
 	make -C $(LIBFTDIR) fclean
