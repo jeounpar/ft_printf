@@ -23,6 +23,7 @@ int		char_format(va_list ap);
 int		int_format(va_list ap);
 int		hex_format(va_list ap, char c);
 int		pointer_format(va_list ap);
+char	*ft_itopointer(unsigned long long n, char *base);
 char	*ft_hextoa(long long n, char *base);
 
 #endif

@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_printf.c \
 	ft_printf_format.c \
-	ft_printf_utils.c
+	ft_printf_utils.c \
+	ft_printf_pointer.c
 
 BSRCS	=
 

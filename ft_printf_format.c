@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:30:30 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 23:13:50 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:31:23 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ int int_format(va_list ap)
 
 int	pointer_format(va_list ap)
 {
-	char		*str;
-	long long	n;
-	int			len;
+	char				*str;
+	unsigned long long	n;
+	int					len;
 
 	len = 0;
-	n = va_arg(ap, long long);
+	n = va_arg(ap, unsigned long long);
 	if (n != 0)
-		str = ft_hextoa(n, "0123456789abcdef");
+		str = ft_itopointer(n, "0123456789abcdef");
 	else
 		str = ft_strdup("0");
 	len += ft_putstr_fd("0x", 1);
