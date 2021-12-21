@@ -27,11 +27,6 @@ SRCS = ft_memset.c \
 	ft_strnstr.c \
 	ft_strncmp.c \
 	ft_atoi.c \
-	ft_isalpha.c \
-	ft_isdigit.c \
-	ft_isalnum.c \
-	ft_isascii.c \
-	ft_isprint.c \
 	ft_toupper.c \
 	ft_tolower.c \
 	ft_calloc.c \
@@ -49,37 +44,17 @@ SRCS = ft_memset.c \
 	ft_putnbr_fd.c
 OBJECTS = $(SRCS:.c=.o)
 
-SRCS_BONUS = ft_lstnew.c \
-	ft_lstadd_front.c \
-	ft_lstsize.c \
-	ft_lstlast.c \
-	ft_lstadd_back.c \
-	ft_lstdelone.c \
-	ft_lstclear.c \
-	ft_lstiter.c \
-	ft_lstmap.c
-OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
-
-ifdef WITH_BONUS
-	OBJ_FILES = $(OBJECTS) $(OBJECTS_BONUS)
-else
-	OBJ_FILES = $(OBJECTS)
-endif
-
 all: $(NAME)
 
-$(NAME) : $(OBJ_FILES)
-	ar rcs $(NAME) $(OBJ_FILES)
+$(NAME) : $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
 
 clean:
-	rm -f $(OBJECTS) $(OBJECTS_BONUS)
+	rm -f $(OBJECTS)
   
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-bonus :
-	make WITH_BONUS=1 all
-
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

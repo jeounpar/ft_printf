@@ -13,35 +13,44 @@
 #include "ft_print.h"
 #include "libft/libft.h"
 
-void	find_format(char c, va_list ap)
+int	find_format(char c, va_list ap)
 {
 	if (c == 'c')
-		ft_putchar_fd(va_arg(ap, int), 1);
+		return (char_format(ap));
+	else if (c == 'd' || c == 'i')
+		return (int_format(ap));
+	else if (c == 's')
+		return (string_format(ap));
+	else if (c == '%')
+		return (ft_putchar_fd('%', 1));
+	else if (c == 'p')
+		return (1);
+	return (1);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list ap;
+	int		len;
 	int		i;
-	int		cnt;
 
 	va_start(ap, str);
 	i = 0;
-	cnt = 0;
+	len = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] != '%')
 		{
-			cnt++;
+			len++;
 			ft_putchar_fd(str[i], 1);
 		}
 		else
 		{
-			find_format(str[i + 1], ap);
+			len += find_format(str[i + 1], ap);
 			i++;
 		}
 		i++;
 	}
 	va_end(ap);
-	return 1;
+	return (len);
 }

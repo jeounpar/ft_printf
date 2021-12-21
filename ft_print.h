@@ -18,5 +18,8 @@
 # include <stdarg.h>
 
 int	ft_printf(const char *, ...);
+int	string_format(va_list ap);
+int	char_format(va_list ap);
+int	int_format(va_list ap);
 
 #endif

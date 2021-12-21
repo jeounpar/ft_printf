@@ -15,9 +15,10 @@ LIBFTDIR	= ./libft
 LIBFTFILE	= libft.a
 INCS = .
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS	= ft_printf.c
+SRCS = ft_printf.c \
+	ft_printf_utils.c
 
 BSRCS	=
 
