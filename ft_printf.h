@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINT_H
-# define FT_PRINT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *str, ...);
 int		string_format(va_list ap);
 int		char_format(va_list ap);
 int		int_format(va_list ap);

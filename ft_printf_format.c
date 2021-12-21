@@ -6,14 +6,14 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:30:30 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 23:31:23 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:45:49 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int string_format(va_list ap)
+int	string_format(va_list ap)
 {
 	char	*str;
 	char	*rst;
@@ -37,12 +37,12 @@ int	char_format(va_list ap)
 	return (1);
 }
 
-int int_format(va_list ap)
+int	int_format(va_list ap)
 {
 	int		n;
 	int		len;
 	char	*str;
-	
+
 	len = 0;
 	n = va_arg(ap, int);
 	str = ft_itoa(n);
@@ -69,7 +69,7 @@ int	pointer_format(va_list ap)
 	return (len);
 }
 
-int hex_format(va_list ap, char c)
+int	hex_format(va_list ap, char c)
 {
 	char	*str;
 	int		len;

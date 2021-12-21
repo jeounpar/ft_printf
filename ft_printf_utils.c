@@ -6,13 +6,13 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 19:15:54 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 20:00:47 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:46:39 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
 	int	i;
 

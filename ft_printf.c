@@ -33,7 +33,7 @@ int	find_format(char c, va_list ap)
 
 int	ft_printf(const char *str, ...)
 {
-	va_list ap;
+	va_list	ap;
 	int		len;
 	int		i;
 

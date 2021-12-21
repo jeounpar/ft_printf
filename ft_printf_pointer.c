@@ -6,13 +6,13 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 23:30:23 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/12/21 23:33:06 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:46:25 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -39,9 +39,9 @@ static int	get_len(unsigned long long n, int base_len)
 
 static void	str_base_to(unsigned long long n, char *base, char *str, int size)
 {
-	int			i;
-	int			neg;
-	int			len;
+	int					i;
+	int					neg;
+	int					len;
 	unsigned long long	tmp;
 
 	len = ft_strlen(base);
