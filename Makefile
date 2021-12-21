@@ -22,10 +22,7 @@ SRCS = ft_printf.c \
 	ft_printf_utils.c \
 	ft_printf_pointer.c
 
-BSRCS	=
-
 OBJS	= $(SRCS:.c=.o)
-BOBJS	= $(BSRCS:.c=.o)
 
 .c.o :
 	gcc $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
